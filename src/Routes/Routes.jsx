@@ -9,6 +9,7 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import DashBoardLayout from "../Layout/DashBoardLayout/DashBoardLayout";
 import ShowAnswer from "../Layout/DashBoardLayout/ShowAnswer/ShowAnswer";
 import Allusers from "../Layout/DashBoardLayout/Alluser/Allusers";
+import AdminRoutes from "./AdminRoutes/AdminRoutes";
 
 const router = createBrowserRouter([
     {
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allusers',
-                element: <Allusers></Allusers>
+                element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
             }
         ]
     }
