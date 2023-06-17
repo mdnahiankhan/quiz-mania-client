@@ -6,14 +6,14 @@ const Allusers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://quiz-mania-server.vercel.app/users');
             const data = await res.json();
             return data;
         }
     })
 
     const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+        fetch(`https://quiz-mania-server.vercel.app/users/admin/${id}`, {
             method: 'PUT',
         })
             .then(res => res.json())
@@ -24,7 +24,19 @@ const Allusers = () => {
                 }
             })
     }
+    const handleDeleteUser = user => {
+        fetch(`https://quiz-mania-server.vercel.app/users/${user}`, {
+            method: 'DELETE',
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success(`Your selected user ${user} is Deleted Successfully`)
+                    refetch();
+                }
 
+            })
+    }
 
     return (
         <div>
@@ -48,7 +60,7 @@ const Allusers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-success btn-xs'>Make Admin</button>}</td>
-                                <td><button className='btn btn-error btn-xs'>Delete User</button></td>
+                                <td><button className='btn btn-error btn-xs' onClick={() => handleDeleteUser(user._id)}>Delete User</button></td>
                             </tr>)
                         }
                     </tbody>

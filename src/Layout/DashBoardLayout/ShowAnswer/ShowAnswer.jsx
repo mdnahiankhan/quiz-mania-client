@@ -26,7 +26,7 @@ const ShowAnswer = () => {
         }
     }, []);
 
-    const url = 'http://localhost:5000/quizCollection';
+    const url = 'https://quiz-mania-server.vercel.app/quizCollection';
     const { data: quizsInfo = [], refetch } = useQuery({
         queryKey: ["quizCollection"],
         queryFn: async () => {
@@ -42,7 +42,7 @@ const ShowAnswer = () => {
             selectedName: selectedName,
             selecteWrongAnser: selecteWrongAnser,
         }
-        fetch('http://localhost:5000/quizCollection', {
+        fetch('https://quiz-mania-server.vercel.app/quizCollection', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -54,7 +54,7 @@ const ShowAnswer = () => {
                 console.log(result);
                 if (result.acknowledged) {
                     refetch();
-                    toast('Your quiz information are recorded successfully')
+                    toast.success('Your quiz information are recorded successfully')
                     setdisabled(true)
                 }
             })
@@ -62,12 +62,12 @@ const ShowAnswer = () => {
 
 
     return (
-        <div className='font-serif'>
+        <div className='font-serif text-lg'>
             <h1 className='text-lg font-bold mb-4'>Submit and get your all Information</h1>
-            <button disabled={disabled} className='btn btn-primary mb-4' onClick={saveQuizInfo}>Submit</button>
+            <button disabled={disabled} className='btn btn-primary mb-4 text-white' onClick={saveQuizInfo}>Submit Your Data</button>
             <div className="overflow-x-auto">
                 <table className="table">
-                    <thead>
+                    <thead className='text-black'>
                         <tr>
                             <th>Index</th>
                             <th>Name</th>

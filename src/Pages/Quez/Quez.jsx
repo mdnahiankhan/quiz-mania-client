@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AllQuiz from './AllQuiz';
+import { Link } from 'react-router-dom';
 
 const Quez = () => {
     const [quizData, setQuizData] = useState(null);
@@ -7,14 +8,13 @@ const Quez = () => {
     useEffect(() => {
         const fetchQuizData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/quiz');
+                const response = await fetch('https://quiz-mania-server.vercel.app/quiz');
                 const data = await response.json();
                 setQuizData(data);
             } catch (error) {
                 console.error('Error fetching quiz data:', error);
             }
         };
-
         fetchQuizData();
     }, []);
 
@@ -31,6 +31,9 @@ const Quez = () => {
                         SetWrongAns={SetWrongAns} wrongAns={wrongAns}
                     ></AllQuiz>)
                 }
+            </div>
+            <div className='flex justify-center items-center mb-4 mt-4'>
+                <Link to='/dashboard'> <button className='btn btn-primary'>See Result</button> </Link>
             </div>
         </div>
     );

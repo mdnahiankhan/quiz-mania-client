@@ -36,7 +36,7 @@ const Registration = () => {
 
     const saveUser = (name, email) => {
         const user = { name, email };
-        fetch('http://localhost:5000/users', {
+        fetch('https://quiz-mania-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const Registration = () => {
 
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='h-[800px] flex justify-center items-center font-serif'>
             <div className='container w-1/3 max-w-xl p-8 mx-auto space-y-6 rounded-md shadow dark:bg-gray-200 ng-untouched ng-pristine ng-valid text-black mt-6 mb-6'>
                 <h1 className="text-2xl font-bold text-center">SignUp</h1>
                 <form onSubmit={handleSubmit(handleSignUp)} noValidate="" action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
@@ -73,7 +73,7 @@ const Registration = () => {
                     </div>
                     <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign Up</button>
                 </form>
-                <p className="text-xs text-center sm:px-6 dark:text-gray-900">Already Have an account? please
+                <p className="text-sm text-center sm:px-6 dark:text-gray-900 ">Already Have an account? please
                     <Link to='/login' rel="noopener noreferrer" href="#" className="underline dark:text-violet-600">Sign in</Link>
                 </p>
             </div>

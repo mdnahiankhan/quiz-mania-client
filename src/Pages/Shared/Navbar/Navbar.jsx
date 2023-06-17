@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email)
     const handleLogOut = () => {
         logOut()
             .then(() => { })
@@ -14,7 +16,11 @@ const Navbar = () => {
     const menuitems = <React.Fragment>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/quiz">Quiz</Link></li>
-        <li><Link to="/addquiz">Add Quiz</Link></li>
+        {
+            isAdmin && <>
+                <li><Link to="/addquiz">Add Quiz</Link></li>
+            </>
+        }
         {user?.uid ?
             <>
                 <li><Link to="/dashboard">DashBoard</Link></li>
@@ -26,7 +32,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100 flex justify-between">
+            <div className="navbar bg-base-100 flex justify-between font-serif">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,7 +42,7 @@ const Navbar = () => {
                             {menuitems}
                         </ul>
                     </div>
-                    <Link className="btn btn-ghost normal-case text-xl">Quiz Mania</Link>
+                    <Link to='/' className="btn btn-ghost normal-case text-xl">Quiz Mania</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 text-lg">

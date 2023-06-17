@@ -16,7 +16,7 @@ const Options = ({ option, data, SetCount, Count, SetWrongAns, wrongAns }) => {
     }
     return (
         <div>
-            <div className='flex items-center gap-4'>
+            <div className='flex items-center gap-4 font-serif'>
                 <input type="radio" name="radio-4" className="radio radio-accent bg-slate-300  rounded hover:bg-green-300 hover:text-white ease-in duration-300 cursor-pointer " onClick={() => usehandler(data)} />{option}
             </div>
         </div>

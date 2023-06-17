@@ -31,7 +31,7 @@ const Login = () => {
             })
     }
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='h-[800px] flex justify-center items-center font-serif'>
             <div className="w-1/3 mx-auto p-8 space-y-3 rounded-xl dark:bg-gray-200 dark:text-gray-900">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form onSubmit={handleSubmit(handleSignIn)} novalidate="" action="" className="space-y-6">
@@ -71,7 +71,7 @@ const Login = () => {
                         </svg>
                     </button>
                 </div>
-                <p className="text-xs text-center sm:px-6 dark:text-violet-400">Don't have an account?
+                <p className="text-sm text-center sm:px-6 dark:text-violet-400">Don't have an account?
                     <Link to='/registration' rel="noopener noreferrer" href="#" className="underline dark:text-gray-900"> Sign up</Link>
                 </p>
             </div>

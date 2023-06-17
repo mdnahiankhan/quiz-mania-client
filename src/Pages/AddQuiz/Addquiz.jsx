@@ -17,7 +17,7 @@ const Addquiz = () => {
             options3: data.options3,
             options4: data.options4
         };
-        fetch('http://localhost:5000/quiz', {
+        fetch('https://quiz-mania-server.vercel.app/quiz', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -28,9 +28,8 @@ const Addquiz = () => {
             .then(res => res.json())
             .then(result => {
                 if (result.acknowledged > 0) {
-                    toast('Your question is added successfully')
+                    toast.success('Your question is added successfully')
                     navigate('/quiz')
-                    console.log(result);
                 };
             })
     }
@@ -56,25 +55,25 @@ const Addquiz = () => {
                         <label className="label">
                             <span className="label-text dark:text-violet-900">Options1</span>
                         </label>
-                        <input type="text" placeholder="Put the date" {...register('options1')} required className="input input-bordered w-full dark:text-violet-900" />
+                        <input type="text" placeholder="put the options" {...register('options1')} required className="input input-bordered w-full dark:text-violet-900" />
                     </div>
                     <div className='mt-10'>
                         <label className="label">
                             <span className="label-text dark:text-violet-900">Options2</span>
                         </label>
-                        <input type="text" placeholder="Put the date" {...register('options2')} required className="input input-bordered w-full dark:text-violet-900" />
+                        <input type="text" placeholder="put the options" {...register('options2')} required className="input input-bordered w-full dark:text-violet-900" />
                     </div>
                     <div className='mt-10'>
                         <label className="label">
                             <span className="label-text dark:text-violet-900">Options3</span>
                         </label>
-                        <input type="text" placeholder="Put the date" {...register('options3')} required className="input input-bordered w-full dark:text-violet-900" />
+                        <input type="text" placeholder="put the options" {...register('options3')} required className="input input-bordered w-full dark:text-violet-900" />
                     </div>
                     <div className='mt-10'>
                         <label className="label">
                             <span className="label-text dark:text-violet-900">Options4</span>
                         </label>
-                        <input type="text" placeholder="Put the date" {...register('options4')} required className="input input-bordered w-full dark:text-violet-900" />
+                        <input type="text" placeholder="put the options" {...register('options4')} required className="input input-bordered w-full dark:text-violet-900" />
                     </div>
                 </fieldset>
                 <div>
